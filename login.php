@@ -29,12 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     if($_SESSION['role']=='admin')
     {
       $_SESSION['message']="Welcome";
-      header("location:admin1/index.html");
+      header("location:html/admin1/index.html");
       exit(0);
     }else if($_SESSION['role']=='user')
     {
       $_SESSION['message']="Welcome";
-       header("location:user_pannel.html");
+       header("location:html/userpage/index.php");
       exit(0);
     }
     else if($_SESSION['role']=='master')

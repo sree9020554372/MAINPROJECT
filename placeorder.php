@@ -1,14 +1,26 @@
-<?php
-//include '../connection.php';
-//session_start();
-//if (! empty($_SESSION['logged_in'])) {
-	# code...
-	//$uid = $_SESSION['reg_id'];
-	//$sql = mysqli_query($conn,"SELECT * from register where reg_id='$uid'");
-	//while($row=mysqli_fetch_array($sql)){
-		//$name = $row['full_name'];
-	//}
-?>
+ <?php
+include '../connection.php';
+session_start(); 
+error_reporting(0);
+$uid = $_SESSION['id'];
+if($_SESSION['id']==""){
+  header('location:sign in.php');
+}
+$sql = mysqli_query($con,"SELECT * from register where id='$uid'");
+while($row=mysqli_fetch_array($sql)){
+  $name = $row['username'];
+ 
+}
+
+    $sql = mysqli_query($con,"SELECT * FROM category");
+    $sid=1;
+    $sid = $_GET['id'];
+    
+
+	?>
+
+
+
 
 
 
@@ -52,7 +64,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="index.php">
-				<p class=""><i class=""></i><h3><b>WELCOME</b></h3><b><h2><?php //echo $name; ?></h2></b></strong></p>
+				<p class=""><i class=""></i><h3><b>WELCOME</b></h3><b><h2></h2></b></strong></p>
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 				  <span class="navbar-toggler-icon"></span>
@@ -60,15 +72,15 @@
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="userview.php">join classes</a></li>
-						<li class="nav-item"><a class="nav-link" href="placeorder.php">view schedule</a></li>
-						<li class="nav-item"><a class="nav-link" href="myorderdetails.php">view attendence</a></li>
-						<li class="nav-item"><a class="nav-link" href="ticketboooking.php">Event Booking</a></li>
+						<li class="nav-item"><a class="nav-link" href="package.php">Package</a></li>
+						<li class="nav-item"><a class="nav-link" href="placeorder.php">Place Food Order</a></li>
+						
+						<li class="nav-item"><a class="nav-link" href="ticketboooking.php">Movie Ticket Booking</a></li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">My acheviements</a>
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">My Cart</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="cart.php">certificates</a>
-								
+								<a class="dropdown-item" href="cart.php">Food Cart</a>
+					
 								<!--<a class="dropdown-item" href="../logout.php">Movie Ticket Cart</a>-->
 							</div>
 						</li>
@@ -99,94 +111,50 @@
 	<!-- End header -->
 	
 	<!-- Start slides -->
-	<div id="slides" class="cover-slides">
-		<ul class="slides-container">
-			<li class="text-left">
-				<img src="images/bcc5667786d6bd1b25e7c4d8a42e85501593499480.jpg" alt="">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br>ElegantD</strong></h1>
-							
-							
-						</div>
-					</div>
-				</div>
-			</li>
-			<li class="text-left">
-				<img src="images/8638c668450989a51a0067ec89a727921593506008.jpg" alt="">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br>ElegantD</strong></h1>
-							
-							
-						</div>
-					</div>
-				</div>
-			</li>
-			<li class="text-left">
-				<img src="images/de4c72b577554ce1f0d8eaf0d3cf3df51593499408.jpg" alt="">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br>ElegantD</strong></h1>
-							
-							
-						</div>
-					</div>
-				</div>
-			</li>
-		</ul>
-		<div class="slides-navigation">
-			<a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-			<a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-		</div>
-	</div>
+	<div class="side">
+            <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+                
+            </div>
 	<!-- End slides -->
 	
 	<!-- Start About -->
-	<div class="about-section-box">
+	<!--<div class="about-section-box">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-12 text-center">
 					<div class="inner-column">
-						<h1>ElegantD</span></h1>
-						<p>dance, the movement of the body in a rhythmic way, usually to music and within a given space, for the purpose of expressing an idea or emotion, releasing energy, or simply taking delight in the movement itself.</p>
-						<p>Dance is an art form consisting of sequences of body movements with aesthetic and often symbolic value, either improvised or purposefully selected.</p>
+						<h1>CRUISELINER</span></h1>
+						<p>Perhaps this cruise ship fact isn’t a fun one, but it’s true. Many people wonder if cruise ships have a morgue on board, and they do. This isn’t something cruise lines publicize, but of course people can die anywhere, even on a cruise vacation. So, all cruise ships sail with a morgue, usually located on the lowest decks away from passengers.</p>
+						<p>This may go without saying for seasoned cruisers, but this fact might surprise you if you’re cruising for the first time. Internet on a cruise just isn’t the same as at a land resort.Wifi has been limited, slow and pretty expensive for years. However, this is changing. We’re now seeing that cruise ship internet is making strides, and is faster and less expensive than in the past. An example of this is the innovative Princess Cruises Ocean Medallion, which has the fast and affordable MedallionNet.</p>
 						
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-12">
-					<img src="images/4f6ed6ef065dd035aba9687d06a58521593506238.jpg" alt="" class="img-fluid">
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End About -->
-	
-	<!-- Start QT -->
-	<!--<div class="qt-box qt-background">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 ml-auto mr-auto text-center">
-					<p class="lead ">
-						" If you're not the one cooking, stay out of the way and compliment the chef. "
-					</p>
-					<span class="lead">Michael Strahan</span>
+					<img src="images/port-img7.jpg" alt="" class="img-fluid">
 				</div>
 			</div>
 		</div>
 	</div>-->
+	<!-- End About -->
+	
+	<!-- Start QT -->
+	<div class="">
+		<div class="container">
+			<div class="row">
+				
+			</div>
+		</div>
+	</div>
 	<!-- End QT -->
 	
 	<!-- Start Menu -->
-	<!--<div class="menu-box">
+	<div class="menu-box">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="heading-title text-center">
-						<h2>Special Menu</h2>
+						<h4>Menu</h4>
+						<h2>Menu</h2>
 						
 						
 					</div>
@@ -195,33 +163,53 @@
 			
 			<div class="row inner-menu-box">
 			
-				<div class="col-3">
+				<div class="">
 					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 					
 						
-						<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">All</a>
-						<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Drinks</a>
-						<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Lunch</</a>
-						<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Dinner</a>
-					</div>
-				</div>
-				
-				<div class="col-9">
-					<div class="tab-content" id="v-pills-tabContent">
-						<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-							
-							
-						</div>
-					</div>
-				</div>
-			</div>
-			
-		</div>
-	</div>-->
+
+                        <div class="row product-categorie-box">
+    
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade show active" id="">
+                                    <div class="row">
+                                    <?php  
+                                    $result = mysqli_query($con,"SELECT * FROM food");
+                                    while ($raw = mysqli_fetch_array($result)){ ?>
+                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                        <form method="post"  enctype="multipart/form-data" action="">
+                                            <div class="products-single fix">
+                                                <div class="box-img-hover">
+                                                   
+                                                    <img src="images/<?php echo $raw['file']; ?>" class="img-fluid" alt="Image" style="height: 188px;">
+                                                   
+                                                </div>
+                                                <div class="why-text">
+                                                    <h4 align="center"><?php echo $raw['name']; ?></h4>
+                                                    
+                                                     
+                                                    <a class="nav-link" id="<?php echo $raw['fid']; ?>" href="listbox.php?fid=<?php echo $raw['fid']; ?>" role="tab" aria-controls="<?php echo $raw['fid']; ?>" aria-selected="true" align="center">Order</a>
+                                                </div>
+                                            </div>
+                                            </form>
+                                        </div>
+                                        <?php } ?>	
+                                    </div>
+                                </div>
+                                
+                                     
+                             
+                            </div>
+                            </div>
+            </div>
+                        </div>
+	        </div>
+	    </div>		
+	</div>
 	<!-- End Menu -->
 	
 	<!-- Start Gallery -->
-	<div class="gallery-box">
+	<!--<div class="gallery-box">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
@@ -234,39 +222,39 @@
 			<div class="tz-gallery">
 				<div class="row">
 					<div class="col-sm-12 col-md-4 col-lg-4">
-						<a class="lightbox" href="images/8638c668450989a51a0067ec89a727921593506008.jpg">
-							<img class="img-fluid" src="images/8638c668450989a51a0067ec89a727921593506008.jpg" alt="Gallery Images">
+						<a class="lightbox" href="images/gallery-img-01.jpg">
+							<img class="img-fluid" src="images/gallery-img-01.jpg" alt="Gallery Images">
 						</a>
 					</div>
 					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="images/western2.jpeg">
-							<img class="img-fluid" src="images/western2.jpeg" alt="Gallery Images">
+						<a class="lightbox" href="images/gallery-img-02.jpg">
+							<img class="img-fluid" src="images/gallery-img-02.jpg" alt="Gallery Images">
 						</a>
 					</div>
 					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="images/western6.jpeg">
-							<img class="img-fluid" src="images/western6.jpeg" alt="Gallery Images">
+						<a class="lightbox" href="images/gallery-img-03.jpg">
+							<img class="img-fluid" src="images/gallery-img-03.jpg" alt="Gallery Images">
 						</a>
 					</div>
 					<div class="col-sm-12 col-md-4 col-lg-4">
-						<a class="lightbox" href="images/classical2.jpeg">
-							<img class="img-fluid" src="images/classical2.jpeg" alt="Gallery Images">
+						<a class="lightbox" href="images/gallery-img-04.jpg">
+							<img class="img-fluid" src="images/gallery-img-04.jpg" alt="Gallery Images">
 						</a>
 					</div>
 					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="images/classical5.jpeg">
-							<img class="img-fluid" src="images/classical5.jpeg" alt="Gallery Images">
+						<a class="lightbox" href="images/gallery-img-05.jpg">
+							<img class="img-fluid" src="images/gallery-img-05.jpg" alt="Gallery Images">
 						</a>
 					</div> 
 					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="images/de4c72b577554ce1f0d8eaf0d3cf3df51593499408.jpg">
-							<img class="img-fluid" src="images/de4c72b577554ce1f0d8eaf0d3cf3df51593499408.jpg" alt="Gallery Images">
+						<a class="lightbox" href="images/gallery-img-06.jpg">
+							<img class="img-fluid" src="images/gallery-img-06.jpg" alt="Gallery Images">
 						</a>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>-->
 	<!-- End Gallery -->
 	
 	<!-- Start Customer Reviews -->
@@ -325,7 +313,7 @@
 	<!-- End Customer Reviews -->
 	
 	<!-- Start Contact info -->
-	<div class="contact-imfo-box">
+	<!--<div class="contact-imfo-box">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 arrow-right">
@@ -357,61 +345,11 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>-->
 	<!-- End Contact info -->
 	
 	<!-- Start Footer -->
-	<footer class="footer-area bg-f">
-		<div class="container">
-			<!--<div class="row">
-				<div class="col-lg-3 col-md-6">
-					<h3>About Us</h3>
-					<p>Integer cursus scelerisque ipsum id efficitur. Donec a dui fringilla, gravida lorem ac, semper magna. Aenean rhoncus ac lectus a interdum. Vivamus semper posuere dui.</p>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<h3>Subscribe</h3>
-					<div class="subscribe_form">
-						<form class="subscribe_form">
-							<input name="EMAIL" id="subs-email" class="form_input" placeholder="Email Address..." type="email">
-							<button type="submit" class="submit">SUBSCRIBE</button>
-							<div class="clearfix"></div>
-						</form>
-					</div>
-					<ul class="list-inline f-social">
-						<li class="list-inline-item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-					</ul>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<h3>Contact information</h3>
-					<p class="lead">Ipsum Street, Lorem Tower, MO, Columbia, 508000</p>
-					<p class="lead"><a href="#">+01 2000 800 9999</a></p>
-					<p><a href="#"> info@admin.com</a></p>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<h3>Opening hours</h3>
-					<p><span class="text-color">Monday: </span>Closed</p>
-					<p><span class="text-color">Tue-Wed :</span> 9:Am - 10PM</p>
-					<p><span class="text-color">Thu-Fri :</span> 9:Am - 10PM</p>
-					<p><span class="text-color">Sat-Sun :</span> 5:PM - 10PM</p>
-				</div>
-			</div>
-		</div>-->
-		
-		<div class="copyright">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<p class="company-name">ElegantD</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-	</footer>
+	
 	<!-- End Footer -->
 	
 	<a href="#" id="back-to-top" title="Back to top" style="display: none;"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
@@ -430,8 +368,3 @@
     <script src="js/custom.js"></script>
 </body>
 </html>
-<?php
-//}
-//else
-//header('location:../login.php');
-//?>
